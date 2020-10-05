@@ -1,6 +1,6 @@
 /**
  * проверка что есть живые клетки
- * @param field {number[][]} - состояние поля
+ * @param _field {number[][]} - состояние поля
  * @return boolean
  */
-export function isAnyoneAlive(field) {}
+export function isAnyoneAlive(_field) {}

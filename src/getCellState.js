@@ -1,8 +1,8 @@
 /**
  * получить состояние клетки
- * @param field {number[][]} - состояние поля
- * @param x {number} - номер колонки
- * @param y {number} - номер строки
+ * @param _field {number[][]} - состояние поля
+ * @param _x {number} - номер колонки
+ * @param _y {number} - номер строки
  * @return boolean - живая клетка или мертвая
  */
-function getCellState(field, x, y) {}
+export function getCellState(_field, _x, _y) {}

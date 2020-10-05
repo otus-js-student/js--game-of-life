@@ -1,7 +1,7 @@
 /**
  * отрисовка поля
- * @param field {number[][]} - состояние поля
- * @param htmlElement {HTMLElement} - элемент, в котором будет отрисовано поле
+ * @param _field {number[][]} - состояние поля
+ * @param _htmlElement {HTMLElement} - элемент, в котором будет отрисовано поле
  * @returns void
  */
-export function drawField(field, htmlElement) {}
+export function drawField(_field, _htmlElement) {}

@@ -10,6 +10,7 @@ module.exports = {
     sourceType: "module",
   },
   rules: {
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
   },
 };
