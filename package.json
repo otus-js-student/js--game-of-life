@@ -1,0 +1,20 @@
+{
+  "name": "js--game-of-life",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/otus-js-student/js--game-of-life.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/otus-js-student/js--game-of-life/issues"
+  },
+  "homepage": "https://github.com/otus-js-student/js--game-of-life#readme"
+}
