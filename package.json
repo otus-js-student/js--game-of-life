@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/otus-js-student/js--game-of-life/issues"
   },
-  "homepage": "https://github.com/otus-js-student/js--game-of-life#readme"
+  "homepage": "https://github.com/otus-js-student/js--game-of-life#readme",
+  "devDependencies": {
+    "eslint": "^7.10.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1"
+  }
 }
