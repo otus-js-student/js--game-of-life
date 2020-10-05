@@ -1,3 +1,1 @@
-alert('Hello');
-
-const a = 1;
+alert("Hello");
