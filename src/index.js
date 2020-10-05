@@ -1,1 +1,3 @@
-alert("Hello");
+import testFunction from "./testFunction";
+
+alert(testFunction());
