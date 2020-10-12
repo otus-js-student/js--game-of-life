@@ -18,6 +18,51 @@ describe("getNumOfAliveNeighbours", () => {
       ],
       expectedResult: 2,
     },
+    {
+      x: 0,
+      y: 0,
+      field: [
+        [1, 1],
+        [1, 0],
+      ],
+      expectedResult: 2,
+    },
+    {
+      x: 1,
+      y: 0,
+      field: [
+        [1, 1],
+        [1, 0],
+      ],
+      expectedResult: 2,
+    },
+    {
+      x: 0,
+      y: 1,
+      field: [
+        [1, 1],
+        [1, 0],
+      ],
+      expectedResult: 2,
+    },
+    {
+      x: 1,
+      y: 1,
+      field: [
+        [1, 1],
+        [1, 0],
+      ],
+      expectedResult: 3,
+    },
+    {
+      x: 0,
+      y: 0,
+      field: [
+        [1, 1],
+        [1, 1],
+      ],
+      expectedResult: 3,
+    },
   ].forEach((el) => {
     it(`should return ${el.expectedResult} for cell (${el.x},${
       el.y
