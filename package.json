@@ -23,6 +23,7 @@
   "homepage": "https://github.com/otus-js-student/js--game-of-life#readme",
   "devDependencies": {
     "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.11.5",
     "@types/jest": "^26.0.14",
     "babel-jest": "^26.5.0",

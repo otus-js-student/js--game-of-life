@@ -4,6 +4,8 @@ import { drawField } from "./drawField";
 
 jest.mock("./drawField");
 
+const sleep = (x) => new Promise((resolve) => setTimeout(resolve, x));
+
 describe("createGameOfLife", () => {
   let element;
   beforeEach(() => {
@@ -74,6 +76,29 @@ describe("createGameOfLife", () => {
         `drawField(${JSON.stringify([
           [0, 0],
           [1, 1],
+        ])})`
+      );
+    });
+    it("on start it runs 1sec timer to update state", async () => {
+      let onCellClick;
+      drawField.mockImplementation((fieldEl, field, cellClickHandler) => {
+        onCellClick = cellClickHandler;
+        fieldEl.innerHTML = `drawField(${JSON.stringify(field)})`;
+      });
+      createGameOfLife(2, 2, element);
+      onCellClick(0, 0);
+      element.querySelector("button").click();
+      expect(element.querySelector(".field-wrapper").innerHTML).toBe(
+        `drawField(${JSON.stringify([
+          [1, 0],
+          [0, 0],
+        ])})`
+      );
+      await sleep(1000);
+      expect(element.querySelector(".field-wrapper").innerHTML).toBe(
+        `drawField(${JSON.stringify([
+          [0, 0],
+          [0, 0],
         ])})`
       );
     });

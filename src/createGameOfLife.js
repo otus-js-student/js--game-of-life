@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 
 import { drawField } from "./drawField";
+import { getNextState } from "./getNextState";
 
 /**
  * Создание игры Жизнь
@@ -11,6 +12,7 @@ import { drawField } from "./drawField";
  */
 export function createGameOfLife(sizeX, sizeY, htmlElement) {
   let gameIsRunning = false;
+  let timer;
 
   // Создать блок для поля
   // Создать кнопку управления игрой
@@ -19,7 +21,7 @@ export function createGameOfLife(sizeX, sizeY, htmlElement) {
   const button = htmlElement.querySelector("button");
 
   // Создать поле заданного размера
-  const field = Array.from({ length: sizeY }).map(() =>
+  let field = Array.from({ length: sizeY }).map(() =>
     Array.from({ length: sizeX }).fill(0)
   );
 
@@ -41,19 +43,22 @@ export function createGameOfLife(sizeX, sizeY, htmlElement) {
       gameIsRunning = true;
       button.innerHTML = "Stop";
       // - запустить таймер для обновления поля
-      //
+      timer = setInterval(() => {
+        // В таймере обновления поля
+        // - посчитать новое состояние поля
+        // - отрисовать новое состояние поля
+        // - проверить, что есть живые клетки
+        // - если живых клеток нет
+        //    - остановить таймер
+        //    - вывести сообщение
+        field = getNextState(field);
+        drawField(fieldWrapper, field, cellClickHandler);
+      }, 1000);
     } else {
       gameIsRunning = false;
       button.innerHTML = "Start";
       // При клике на кнопке `Stop` остановить таймер
-      //
+      clearInterval(timer);
     }
   });
-  // В таймере обновления поля
-  // - посчитать новое состояние поля
-  // - отрисовать новое состояние поля
-  // - проверить, что есть живые клетки
-  // - если живых клеток нет
-  //    - остановить таймер
-  //    - вывести сообщение
 }
