@@ -8,11 +8,14 @@ const sleep = (x) => new Promise((resolve) => setTimeout(resolve, x));
 
 describe("createGameOfLife", () => {
   let element;
+  const originalAlert = window.alert;
   beforeEach(() => {
     element = document.createElement("div");
+    window.alert = jest.fn();
   });
   afterEach(() => {
     jest.resetAllMocks();
+    window.alert = originalAlert;
   });
   describe("UI", () => {
     it("creates Start button and field", () => {
@@ -101,6 +104,19 @@ describe("createGameOfLife", () => {
           [0, 0],
         ])})`
       );
+    });
+    it("stops game with alert, when none alive", async () => {
+      let onCellClick;
+      drawField.mockImplementation((fieldEl, field, cellClickHandler) => {
+        onCellClick = cellClickHandler;
+        fieldEl.innerHTML = `drawField(${JSON.stringify(field)})`;
+      });
+      createGameOfLife(2, 2, element);
+      onCellClick(0, 0);
+      element.querySelector("button").click();
+      await sleep(1000);
+      expect(window.alert).toHaveBeenCalledWith("Death on the block");
+      expect(element.querySelector("button").innerHTML).toBe("Start");
     });
   });
 });
