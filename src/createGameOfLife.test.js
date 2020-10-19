@@ -1,9 +1,16 @@
+/* eslint-disable no-param-reassign */
 import { createGameOfLife } from "./createGameOfLife";
+import { drawField } from "./drawField";
+
+jest.mock("./drawField");
 
 describe("createGameOfLife", () => {
   let element;
   beforeEach(() => {
     element = document.createElement("div");
+  });
+  afterEach(() => {
+    jest.resetAllMocks();
   });
   describe("UI", () => {
     it("creates Start button and field", () => {
@@ -21,6 +28,18 @@ describe("createGameOfLife", () => {
       expect(element.querySelector("button").innerHTML).toBe("Start");
       element.querySelector("button").click();
       expect(element.querySelector("button").innerHTML).toBe("Stop");
+    });
+    it("draws field", () => {
+      drawField.mockImplementation((fieldEl, field) => {
+        fieldEl.innerHTML = `drawField(${JSON.stringify(field)})`;
+      });
+      createGameOfLife(2, 2, element);
+      expect(element.querySelector(".field-wrapper").innerHTML).toBe(
+        `drawField(${JSON.stringify([
+          [0, 0],
+          [0, 0],
+        ])})`
+      );
     });
   });
 });

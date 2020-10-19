@@ -1,12 +1,15 @@
 /* eslint-disable no-param-reassign */
+
+import { drawField } from "./drawField";
+
 /**
  * Создание игры Жизнь
- * @param _sizeX {number} - число колонок
- * @param _sizeY {number} - число строк
+ * @param sizeX {number} - число колонок
+ * @param sizeY {number} - число строк
  * @param htmlElement {HTMLElement} - элемент, в котором будет отрисована игра
  * @returns void
  */
-export function createGameOfLife(_sizeX, _sizeY, htmlElement) {
+export function createGameOfLife(sizeX, sizeY, htmlElement) {
   let gameIsRunning = false;
 
   // Создать блок для поля
@@ -14,9 +17,12 @@ export function createGameOfLife(_sizeX, _sizeY, htmlElement) {
   htmlElement.innerHTML = `<div class="field-wrapper"></div><button>Start</button>`;
 
   // Создать поле заданного размера
-  //
+  const field = Array.from({ length: sizeY }).map(() =>
+    Array.from({ length: sizeX }).fill(0)
+  );
   // Отрисовать поле заданного размера
-  //
+  const fieldWrapper = htmlElement.querySelector(".field-wrapper");
+  drawField(fieldWrapper, field, () => {});
   // При клике по ячейке поля
   // - поменять его состояние
   // - перерисовать поле
