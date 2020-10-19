@@ -41,5 +41,41 @@ describe("createGameOfLife", () => {
         ])})`
       );
     });
+    it("redraw field on interaction with it", () => {
+      let onCellClick;
+      drawField.mockImplementation((fieldEl, field, cellClickHandler) => {
+        onCellClick = cellClickHandler;
+        fieldEl.innerHTML = `drawField(${JSON.stringify(field)})`;
+      });
+      createGameOfLife(2, 2, element);
+      expect(element.querySelector(".field-wrapper").innerHTML).toBe(
+        `drawField(${JSON.stringify([
+          [0, 0],
+          [0, 0],
+        ])})`
+      );
+      onCellClick(0, 0);
+      expect(element.querySelector(".field-wrapper").innerHTML).toBe(
+        `drawField(${JSON.stringify([
+          [1, 0],
+          [0, 0],
+        ])})`
+      );
+      onCellClick(0, 0);
+      expect(element.querySelector(".field-wrapper").innerHTML).toBe(
+        `drawField(${JSON.stringify([
+          [0, 0],
+          [0, 0],
+        ])})`
+      );
+      onCellClick(0, 1);
+      onCellClick(1, 1);
+      expect(element.querySelector(".field-wrapper").innerHTML).toBe(
+        `drawField(${JSON.stringify([
+          [0, 0],
+          [1, 1],
+        ])})`
+      );
+    });
   });
 });

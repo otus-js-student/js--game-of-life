@@ -15,19 +15,25 @@ export function createGameOfLife(sizeX, sizeY, htmlElement) {
   // Создать блок для поля
   // Создать кнопку управления игрой
   htmlElement.innerHTML = `<div class="field-wrapper"></div><button>Start</button>`;
+  const fieldWrapper = htmlElement.querySelector(".field-wrapper");
+  const button = htmlElement.querySelector("button");
 
   // Создать поле заданного размера
   const field = Array.from({ length: sizeY }).map(() =>
     Array.from({ length: sizeX }).fill(0)
   );
+
+  const cellClickHandler = (x, y) => {
+    field[y][x] = field[y][x] === 0 ? 1 : 0;
+    drawField(fieldWrapper, field, cellClickHandler);
+  };
+
   // Отрисовать поле заданного размера
-  const fieldWrapper = htmlElement.querySelector(".field-wrapper");
-  drawField(fieldWrapper, field, () => {});
+  drawField(fieldWrapper, field, cellClickHandler);
   // При клике по ячейке поля
   // - поменять его состояние
   // - перерисовать поле
 
-  const button = htmlElement.querySelector("button");
   button.addEventListener("click", () => {
     if (!gameIsRunning) {
       // При клике по кнопке старт
