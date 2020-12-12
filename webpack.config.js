@@ -8,4 +8,13 @@ module.exports = {
     port: 9000,
   },
   plugins: [new HtmlWebpackPlugin()],
+  module: {
+    rules: [
+      {
+        // https://webpack.js.org/loaders/css-loader/
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
 };
