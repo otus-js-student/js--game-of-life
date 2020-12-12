@@ -22,7 +22,7 @@ describe("createGameOfLife", () => {
       createGameOfLife(10, 10, element);
       expect(element.querySelector("button")).toBeTruthy();
       expect(element.querySelector("button").innerHTML).toBe("Start");
-      expect(element.querySelector(".field-wrapper")).toBeTruthy();
+      expect(element.querySelector(".GameOfLife___wrapper")).toBeTruthy();
     });
     it("changes button name on click", () => {
       createGameOfLife(10, 10, element);
@@ -39,7 +39,7 @@ describe("createGameOfLife", () => {
         fieldEl.innerHTML = `drawField(${JSON.stringify(field)})`;
       });
       createGameOfLife(2, 2, element);
-      expect(element.querySelector(".field-wrapper").innerHTML).toBe(
+      expect(element.querySelector(".GameOfLife___wrapper").innerHTML).toBe(
         `drawField(${JSON.stringify([
           [0, 0],
           [0, 0],
@@ -53,21 +53,21 @@ describe("createGameOfLife", () => {
         fieldEl.innerHTML = `drawField(${JSON.stringify(field)})`;
       });
       createGameOfLife(2, 2, element);
-      expect(element.querySelector(".field-wrapper").innerHTML).toBe(
+      expect(element.querySelector(".GameOfLife___wrapper").innerHTML).toBe(
         `drawField(${JSON.stringify([
           [0, 0],
           [0, 0],
         ])})`
       );
       onCellClick(0, 0);
-      expect(element.querySelector(".field-wrapper").innerHTML).toBe(
+      expect(element.querySelector(".GameOfLife___wrapper").innerHTML).toBe(
         `drawField(${JSON.stringify([
           [1, 0],
           [0, 0],
         ])})`
       );
       onCellClick(0, 0);
-      expect(element.querySelector(".field-wrapper").innerHTML).toBe(
+      expect(element.querySelector(".GameOfLife___wrapper").innerHTML).toBe(
         `drawField(${JSON.stringify([
           [0, 0],
           [0, 0],
@@ -75,7 +75,7 @@ describe("createGameOfLife", () => {
       );
       onCellClick(0, 1);
       onCellClick(1, 1);
-      expect(element.querySelector(".field-wrapper").innerHTML).toBe(
+      expect(element.querySelector(".GameOfLife___wrapper").innerHTML).toBe(
         `drawField(${JSON.stringify([
           [0, 0],
           [1, 1],
@@ -91,14 +91,14 @@ describe("createGameOfLife", () => {
       createGameOfLife(2, 2, element);
       onCellClick(0, 0);
       element.querySelector("button").click();
-      expect(element.querySelector(".field-wrapper").innerHTML).toBe(
+      expect(element.querySelector(".GameOfLife___wrapper").innerHTML).toBe(
         `drawField(${JSON.stringify([
           [1, 0],
           [0, 0],
         ])})`
       );
       await sleep(1000);
-      expect(element.querySelector(".field-wrapper").innerHTML).toBe(
+      expect(element.querySelector(".GameOfLife___wrapper").innerHTML).toBe(
         `drawField(${JSON.stringify([
           [0, 0],
           [0, 0],
