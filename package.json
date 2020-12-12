@@ -39,6 +39,8 @@
     "lint-staged": "^10.4.0",
     "prettier": "2.1.2",
     "style-loader": "^2.0.0",
+    "stylelint": "^13.8.0",
+    "stylelint-config-standard": "^20.0.0",
     "webpack": "^5.2.0",
     "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.11.0"
@@ -53,6 +55,7 @@
       "prettier --write",
       "eslint --cache --fix"
     ],
-    "*.{css,md,yml}": "prettier --write"
+    "*.{css,md,yml}": "prettier --write",
+    "*.css": "stylelint"
   }
 }
