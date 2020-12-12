@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "lint": "prettier --check . && eslint .",
-    "lint:fix": "prettier --write . && eslint . --fix",
+    "lint": "prettier --check . && eslint . && stylelint \"**/*.css\"",
+    "lint:fix": "prettier --write . && eslint . --fix && stylelint \"**/*.css\" --fix",
     "start": "webpack serve --mode development",
     "build": "webpack --mode production"
   },
