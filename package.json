@@ -60,6 +60,6 @@
       "eslint --cache --fix"
     ],
     "*.{css,md,yml}": "prettier --write",
-    "*.css": "stylelint"
+    "*.css": "stylelint --fix"
   }
 }
