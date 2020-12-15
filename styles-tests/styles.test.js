@@ -2,7 +2,11 @@
 /* globals jasmine */
 // https://www.npmjs.com/package/puppeteer-screenshot-tester
 import puppeteer from "puppeteer";
-import ScreenshotTester from "puppeteer-screenshot-tester";
+import { toMatchImageSnapshot } from "jest-image-snapshot";
+
+expect.extend({ toMatchImageSnapshot });
+
+// import ScreenshotTester from "puppeteer-screenshot-tester";
 
 describe("styles.test", () => {
   let originalTimeout;
@@ -26,15 +30,15 @@ describe("styles.test", () => {
   ].forEach(({ width, height }) =>
     it(`should have proper view for ${width}x${height} params`, async () => {
       // create ScreenshotTester with optional config
-      const tester = await ScreenshotTester(
-        0.8,
-        false,
-        false,
-        {},
-        {
-          transparency: 0.5,
-        }
-      );
+      // const tester = await ScreenshotTester(
+      //   0.8,
+      //   false,
+      //   false,
+      //   {},
+      //   {
+      //     transparency: 0.5,
+      //   }
+      // );
 
       // setting up puppeteer
       const browser = await puppeteer.launch();
@@ -45,22 +49,26 @@ describe("styles.test", () => {
       // IMPORTANT!: test assumes webpack is started
       await page.goto("http://localhost:9000", { waitUntil: "networkidle0" });
 
+      const image = await page.screenshot();
+      await browser.close();
+
+      expect(image).toMatchImageSnapshot();
+
       // call our tester with browser page returned by puppeteer browser
       // second parameter is optional it's just a test name if provide that's filename
       // plus we can use current test name to simplify file names management
       // https://stackoverflow.com/questions/48168385/get-currently-executed-describe-test-name
-      const result = await tester(
-        page,
-        `${expect.getState().currentTestName}_1`,
-        {
-          // by default it keeps screenshots next to test file
-          fullPage: true,
-        }
-      );
-      await browser.close();
+      // const result = await tester(
+      //   page,
+      //   `${expect.getState().currentTestName}_1`,
+      //   {
+      //     // by default it keeps screenshots next to test file
+      //     fullPage: true,
+      //   }
+      // );
 
       // make assertion result is always boolean
-      expect(result).toBe(true);
+      // expect(result).toBe(true);
     })
   );
 });

@@ -10,7 +10,7 @@
 @media only screen and (max-width: 800px) {
   .Page__title {
     font-size: 48px;
-    color: red;
+    color: green;
     border: 1px dotted lightblue;
   }
 }

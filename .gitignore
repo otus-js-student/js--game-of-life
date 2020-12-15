@@ -5,3 +5,4 @@ coverage
 
 // ignore diff images
 *-diff.png
+__diff_output__
