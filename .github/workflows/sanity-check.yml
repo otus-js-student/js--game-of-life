@@ -26,6 +26,7 @@ jobs:
 
       - name: Archive artifacts for style tests
         uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
         with:
           name: artifacts
           path: |
