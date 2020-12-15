@@ -52,10 +52,14 @@ describe("styles.test", () => {
       const image = await page.screenshot();
       await browser.close();
 
-      expect(image).toMatchImageSnapshot({
-        failureThreshold: 0.005,
-        failureThresholdType: "percent",
-      });
+      expect(image).toMatchImageSnapshot(
+        process.env.CI
+          ? {
+              failureThreshold: 0.005,
+              failureThresholdType: "percent",
+            }
+          : undefined
+      );
 
       // call our tester with browser page returned by puppeteer browser
       // second parameter is optional it's just a test name if provide that's filename
