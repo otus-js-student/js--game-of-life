@@ -17,8 +17,8 @@ export function createGameOfLife(sizeX, sizeY, htmlElement) {
 
   // Создать блок для поля
   // Создать кнопку управления игрой
-  htmlElement.innerHTML = `<div class="field-wrapper"></div><button>Start</button>`;
-  const fieldWrapper = htmlElement.querySelector(".field-wrapper");
+  htmlElement.innerHTML = `<div class="GameOfLife___wrapper"></div><button>Start</button>`;
+  const fieldWrapper = htmlElement.querySelector(".GameOfLife___wrapper");
   const button = htmlElement.querySelector("button");
 
   // Создать поле заданного размера

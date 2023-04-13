@@ -1,0 +1,16 @@
+.GameOfLife___wrapper {
+  margin: 10px auto;
+}
+
+/* Test adaptive styles */
+.Page__title {
+  font-size: 96px;
+}
+
+@media only screen and (max-width: 800px) {
+  .Page__title {
+    font-size: 48px;
+    color: green;
+    border: 1px dotted lightblue;
+  }
+}

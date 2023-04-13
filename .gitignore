@@ -2,3 +2,7 @@ node_modules
 .eslintcache
 dist
 coverage
+
+// ignore diff images
+*-diff.png
+__diff_output__
